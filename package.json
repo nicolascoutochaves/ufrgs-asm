@@ -27,9 +27,6 @@
 			{
 				"id": "asm",
 				"aliases": [
-					"ASM",
-					"asm",
-					"Asm",
 					"ced",
 					"ahd",
 					"rad"
@@ -45,7 +42,7 @@
 		"grammars": [
 			{
 				"language": "asm",
-				"scopeName": "source.arm",
+				"scopeName": "source.asm",
 				"path": "./syntaxes/ufrgs-asm.json"
 			}
 		]
