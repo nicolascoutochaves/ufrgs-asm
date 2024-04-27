@@ -1,12 +1,12 @@
 {
-	"name": "arm",
-	"displayName": "Arm Assembly",
-	"description": "Arm assembly syntax support for Visual Studio Code",
-	"version": "1.7.4",
-	"publisher": "dan-c-underwood",
+	"name": "UFRGS-Asm",
+	"displayName": "UFRGS Assembly",
+	"description": "Suporte a sintaxe de assembly dos processadores hipoteticos da UFRGS",
+	"version": "1.0",
+	"publisher": "nicolascoutochaves",
 	"icon": "images/icon.png",
 	"author": {
-		"name": "Dan Underwood"
+		"name": "Nicolas Chaves"
 	},
 	"categories": [
 		"Programming Languages"
@@ -20,31 +20,33 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/dan-c-underwood/vscode-arm.git"
+		"url": "https://github.com/nicolascoutochaves/ufrgs-asm"
 	},
 	"contributes": {
 		"languages": [
 			{
-				"id": "arm",
+				"id": "asm",
 				"aliases": [
-					"ARM",
-					"arm",
-					"Arm"
+					"ASM",
+					"asm",
+					"Asm",
+					"ced",
+					"ahd",
+					"rad"
 				],
 				"extensions": [
-					".s",
-					".S",
-					".asm",
-					".sx"
+					".ced",
+					".rad",
+					".ahd"
 				],
 				"configuration": "./language-configuration.json"
 			}
 		],
 		"grammars": [
 			{
-				"language": "arm",
+				"language": "asm",
 				"scopeName": "source.arm",
-				"path": "./syntaxes/arm.tmlanguage.json"
+				"path": "./syntaxes/ufrgs-asm.json"
 			}
 		]
 	}
