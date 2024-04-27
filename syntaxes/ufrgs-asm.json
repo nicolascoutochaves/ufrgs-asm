@@ -1,5 +1,5 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"$schema": "https://raw.githubusercontent.com/nicolascoutochaves/ufrgs-asm/master/syntaxes/ufrgs-asm.json",
   "scopeName": "source.arm",
   "name": "UFRGS Assembly",
   "fileTypes": [
@@ -9,16 +9,16 @@
   ],
   "patterns": [
     {
-      "match": "^\\s*[#\\.](define|include|(end|el|else)?if|if(def|ndef)?|else)(\\s+(defined\\(\\w+\\)|\\w+)(\\s+(&&|\\|\\|)\\s+defined\\(\\w+\\)|\\w]+)*)?\\b",
+      "match": "\b(equ|db|dab|dw|daw)\b",
       "name": "meta.preprocessor"
     },
     {
-      "match": "^\\s*\\.?\\w+:\\s*(?=$|;)",
-      "name": "routine.arm"
+      "match": "*:|jsr ?? *",
+      "name": "routine.asm"
     },
     {
-      "match": "\\b(?i)(?:v?(?:add|cvt|bic|sub|trn|cmp|cb(?:z|nz)|[us]?div|qdmulh|mul|ld1|qadd|qshrun|st[1234]|addw|mull|mlal|rshrn|swp|qmovunand|m(?:rs|sr)|eor|sub|rsb|adc|sbc|rsc|and|tst|teq|cmp|cmn|orr|mov|bic|mvn|neg|lsr|lsl|ror|asr)|mul|mla|mull|smlabb|rev(?:8|16)?|pld|adr|adrl|vswp)(?:(?:(?=s)s(\\w{2})?)|(\\w{2})s?)?(?-i)\\b",
-      "name": "support.function.mnemonic.arithmetic.arm",
+      "match": "\b(cesar instructions here)\b",
+      "name": "support.function.mnemonic.arithmetic.asm",
       "captures": {
         "1": {
           "patterns": [
@@ -45,133 +45,7 @@
           ]
         }
       }
-    },
-    {
-      "match": "\\b(?i)v?(?:ldr|str)(?:d(\\w{2})?|(?:(?:s?b|s?h)(\\w{2})?|(\\w{2})(?:s?b|s?h)?))(?-i)\\b",
-      "name": "support.function.mnemonic.memory.arm",
-      "captures": {
-        "1": {
-          "patterns": [
-            {
-              "include": "#conditions",
-              "name": "support.function.mnemonic.memory.arm"
-            },
-            {
-              "match": "\\w{2}",
-              "name": "invalid.illegal.condition.arm"
-            }
-          ]
-        },
-        "2": {
-          "patterns": [
-            {
-              "include": "#conditions",
-              "name": "support.function.mnemonic.memory.arm"
-            },
-            {
-              "match": "\\w{2}",
-              "name": "invalid.illegal.condition.arm"
-            }
-          ]
-        },
-        "3": {
-          "patterns": [
-            {
-              "include": "#conditions",
-              "name": "support.function.mnemonic.memory.arm"
-            },
-            {
-              "match": "\\w{2}",
-              "name": "invalid.illegal.condition.arm"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "match": "\\b(?i)(?:ldar[bh]?|ldax[pb(?:rh?)]|ldn?p|ldpsw|ldr[bh]?|ldrsb|ldrsh|ldrsw|ldtr[bh]?|ldtrsw|ldurb?|ldursb|ldursh|ldursw|ldx[pr]|ldxr[bh])(?-i)\\b",
-      "name": "support.function.mnemonic.memory.arm"
-    },
-    {
-      "match": "\\b(?i)(?:prfu?m)(?-i)\\b",
-      "name": "support.function.mnemonic.memory.arm"
-    },
-    {
-      "match": "\\b(?i)(?:stlr[bh]?|stlx[pb(?:rh?)]|stn?p|str[bh]?|sttr[bh]?|stur[nh]?|stx[pb(?:rh?)])(?-i)\\b",
-      "name": "support.function.mnemonic.memory.arm"
-    },
-    {
-      "match": "\\b(?i)(dc[dubi](?:[qw]u?)?)|area|space|fill\\b",
-      "name": "support.function.mnemonic.memory.arm"
-    },
-    {
-      "match": "\\b(?i)(?:ldm(?:ia)?|ldmf[da]|ldmd[ab]|ldmea|ldmib|ldmed|v?(?:push|pop)|stm(?:ia)?|stmd[ab]|stmed|stmfd|stmib|smfa(?:\\.n|\\.w)?)(?-i)\\b",
-      "name": "support.function.mnemonic.multiple.arm"
-    },
-    {
-      "match": "\\b(?i)(?:mov(?:w|t)?|pac(?:dz?[a|b]|ga|i(?:[a|b](?:1716|sp|z)?)|z[a|b])|swi|svc|hvc|dmb|clrex|dsb|isb|tlbi|b(?:l|l?x|l?r)?|(?:i|e)?ret(?:aa|ab)?)(?:(?:(?=s)s(\\w{2})?)|(\\w{2})s?)?(?-i)\\b",
-      "name": "support.function.mnemonic.memory.arm",
-      "captures": {
-        "1": {
-          "patterns": [
-            {
-              "include": "#conditions",
-              "name": "support.function.mnemonic.memory.arm"
-            },
-            {
-              "match": "\\w{2}",
-              "name": "invalid.illegal.condition.arm"
-            }
-          ]
-        },
-        "2": {
-          "patterns": [
-            {
-              "include": "#conditions",
-              "name": "support.function.mnemonic.memory.arm"
-            },
-            {
-              "match": "\\w{2}",
-              "name": "invalid.illegal.condition.arm"
-            }
-          ]
-        }
-      }
-    },
-    {
-      "match": "\\b(?i)((wf[ei])|cps(i[de])?)(?-i)\\b",
-      "name": "keyword.control.cpu.arm"
-    },
-    {
-      "match": "\\b(?i)(def(b|w|s)|equ\\s.+\\.s)(?-i)\\b",
-      "name": "keyword.control.define.arm"
-    },
-    {
-      "name": "keyword.control.directive.arm",
-      "match": "\\.(?i)(globl|global|extern|weak|macro|endm|purgem|section|text|data|bss|arm|align|balign|irp|rept|endr|(un)?req|error|short|(end)?func|hidden|type|cpu|fpu|arch|code|syntax|altmacro|object_arch|word|int|string|thumb(_set)?|set|pragma|undef|line|get)(?-i)\\b"
-    },
-    {
-      "match": "\\b\\=",
-      "name": "keyword.control.evaluation"
-    },
-    {
-      "match": "\\b(?i)nop(\\w+)?(?-i)\\b",
-      "name": "comment.nop.arm",
-      "captures": {
-        "1": {
-          "patterns": [
-            {
-              "include": "#conditions",
-              "name": "comment.nop.arm"
-            },
-            {
-              "match": "\\w+",
-              "name": "invalid.illegal.condition.arm"
-            }
-          ]
-        }
-      }
-    },
+    }, 
     {
       "name": "storage.memaddress.arm",
       "match": "\\[[ \\t]*(\\w+),[ \\t]*([a-zA-Z0-9#-_]+)[ \\t]*\\]!?",
