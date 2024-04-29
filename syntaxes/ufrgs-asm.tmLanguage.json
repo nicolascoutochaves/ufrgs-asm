@@ -1,0 +1,51 @@
+{
+  "scopeName": "source.ufrgs-asm",
+  "fileTypes": [".ced", ".rad", ".ahd"],
+  "patterns": [
+      {
+          "include": "#comments"
+      },
+      {
+          "include": "#keywords"
+      },
+      {
+          "include": "#strings"
+      }
+  ],
+  "repository": {
+      "comments": {
+          "patterns": [
+              {
+                  "name": "comment.line.semicolon.ufrgs-asm",
+                  "match": ";.*$",
+                  "captures": {
+                      "0": { "name": "punctuation.definition.comment.ufrgs-asm" }
+                  }
+              }
+          ]
+      },
+      "keywords": {
+          "patterns": [
+              {
+                  "name": "keyword.control.ufrgs-asm",
+                  "match": "\\b(your|actual|keywords)\\b"
+              }
+          ]
+      },
+      "strings": {
+          "patterns": [
+              {
+                  "name": "string.quoted.double.ufrgs-asm",
+                  "begin": "\"",
+                  "end": "\"",
+                  "patterns": [
+                      {
+                          "name": "constant.character.escape.ufrgs-asm",
+                          "match": "\\\\."
+                      }
+                  ]
+              }
+          ]
+      }
+  }
+}
