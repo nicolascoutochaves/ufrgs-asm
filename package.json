@@ -1,8 +1,8 @@
 {
-	"name": "UFRGS-Asm",
+	"name": "ufrgs-asm",
 	"displayName": "UFRGS Assembly",
 	"description": "Suporte a sintaxe de assembly dos processadores hipoteticos da UFRGS",
-	"version": "1.0",
+	"version": "0.1",
 	"publisher": "nicolascoutochaves",
 	"icon": "images/icon.png",
 	"author": {
@@ -22,14 +22,16 @@
 		"type": "git",
 		"url": "https://github.com/nicolascoutochaves/ufrgs-asm"
 	},
+	"activationEvents": [
+		"onLanguage:ufrgs-asm"
+	],
 	"contributes": {
 		"languages": [
 			{
-				"id": "asm",
+				"id": "ufrgs-asm",
 				"aliases": [
-					"ced",
-					"ahd",
-					"rad"
+					"UFRGS Assembly",
+					"ufrgs-asm"
 				],
 				"extensions": [
 					".ced",
@@ -41,9 +43,9 @@
 		],
 		"grammars": [
 			{
-				"language": "asm",
-				"scopeName": "source.asm",
-				"path": "./syntaxes/ufrgs-asm.json"
+				"language": "ufrgs-asm",
+				"scopeName": "source.ufrgs-asm",
+				"path": "./syntaxes/ufrgs-asm.tmLanguage.json"
 			}
 		]
 	}
